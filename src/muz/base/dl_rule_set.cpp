@@ -496,6 +496,19 @@ namespace datalog {
         }
     }
 
+    void rule_set::display_smt2(std::ostream & out) const {
+        for (func_decl * f : m_output_preds) {
+            out << "; output: " << f->get_name() << '\n';
+        }
+        for (auto const& kv : m_head2rules) {
+            ptr_vector<rule> * rules = kv.m_value;
+            for (rule* r : *rules) {
+                m_rule_manager.display_smt2(*r, out);
+                out << '\n';
+            }
+        }
+    }
+
     bool rule_set::is_finite_domain() const {
         for (rule * r : *this) {
             if (!get_rule_manager().is_finite_domain(*r)) 

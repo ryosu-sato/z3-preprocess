@@ -482,6 +482,9 @@ namespace datalog {
         void display_rules(std::ostream & out) const {
             m_rule_set.display(out);
         }
+        void display_rules_smt2(std::ostream & out) const {
+            m_rule_set.display_smt2(out);
+        }
 
         void display(std::ostream & out) const;
 

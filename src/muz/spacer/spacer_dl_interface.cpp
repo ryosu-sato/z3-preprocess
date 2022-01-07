@@ -136,6 +136,9 @@ lbool dl_interface::query(expr * query)
         }
     }
 
+    m_ctx.display_rules_smt2(std::cout);
+    exit(0);
+
     const datalog::rule_set& rules = m_ctx.get_rules();
     if (rules.get_output_predicates().empty()) {
         m_context->set_unsat();
